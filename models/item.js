@@ -18,8 +18,8 @@ const itemSchema = new Schema({
     },
     image: {
         type: String,
-        default: "init\Item Images\download.jpeg",
-        set: (v) => v === "" ? "init\Item Images\download.jpeg" : v
+        default: "./itemImages/download.jpeg",
+        set: (v) => v === "" ? "./itemImages/download.jpeg" : v
     }
 })
 

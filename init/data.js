@@ -5,7 +5,7 @@ const sampleItems = [
         title: "Umbrella",
         description: "Avoid Rain",
         price: 199,
-        image: "C:\Users\hp\OneDrive\Desktop\TOP-Deal Project\TOP-Deals\init\itemImages\Backpack.jpeg"
+        image: "./itemImages/Umbrella.webp"
     },
     {
         title: "Backpack",
