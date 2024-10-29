@@ -1,0 +1,16 @@
+<% layout('/layouts/boilerplate.ejs')-%>
+<body>
+  <h3>Edit This Item</h3>
+  <form method="post" action="/top-deal/<%= item._id%>?_method=PUT">
+    <input name="item[title]" type="text" value="<%= item.title%>" />
+    <br />
+    <br />
+    <textarea name="item[description]"><%= item.description%></textarea>
+    <br /><br />
+    <input name="item[price]" type="number" value="<%= item.price%>" />
+    <br /><br />
+    <input name="item[image]" value="<%= item.image%>" />
+    <br /><br />
+    <button>Edit Item</button>
+  </form>
+</body>

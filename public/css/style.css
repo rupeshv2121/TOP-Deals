@@ -1,0 +1,62 @@
+/* Navbar CSS */
+.container{
+    margin: 0 !important;
+}
+.navbar{
+    height: 4rem;
+    background-color: white;
+}
+
+.fa-basket-shopping{
+    font-size: 1.5rem;
+    margin-left: 2rem;
+}
+
+.nav-link{
+    color: black !important;
+    font-size: 1.2rem;
+    padding-left: 1.5rem !important;
+}
+
+.search-nav{
+    width: 19rem !important;
+}
+
+.account_cart{
+   width: 0rem;
+}
+
+.searchBtn{
+    margin-right: 8rem !important;
+}
+
+
+/* Footer CSS */
+.copyright{
+    text-align: center;
+    padding: 1rem;
+}
+
+.f-info{
+    background-color: #ffffff;
+    width: 100% !important;
+}
+
+.footer{
+    position: relative;
+    bottom: 0rem;
+    margin-left: 7rem;
+}
+
+.description{
+    padding: 1rem 2rem 1rem 2rem !important;
+}
+
+.info{
+    padding: 1rem 5rem 0rem 7rem ;
+}
+
+.f-info-socials{
+    font-size: 1.5rem;
+    padding-left: 7rem;
+}

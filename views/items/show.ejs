@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Item</title>
-  </head>
-  <body>
-    <h2><%=item.title%></h2>
-    <p><%=item.description%></p>
-    <p>&#8377;<%=item.price.toLocaleString("en-IN")%></p>
-    <!-- <h3><%= item.image%></h3> -->
-  </body>
-</html>
+<% layout('/layouts/boilerplate.ejs') -%>
+<body>
+  <h2><%=item.title%></h2>
+  <p><%=item.description%></p>
+  <p>&#8377;<%=item.price.toLocaleString("en-IN")%></p>
+  <!-- <h3><%= item.image%></h3> -->
+  <a href="/top-deal/<%=item._id%>/edit">Edit This Item</a>
+  <form method="POST" action="/top-deal/<%=item._id%>?_method=delete">
+    <button>Delete</button>
+  </form>
+</body>

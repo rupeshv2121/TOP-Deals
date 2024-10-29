@@ -3,6 +3,8 @@ const app = express();
 const mongoose = require("mongoose");
 const Item = require("./models/item");
 const path = require("path");
+const methodOverride = require("method-override");
+const ejsMate = require("ejs-mate");
 
 const MONGO_URL = "mongodb://localhost:27017/top_deals";
 main().then(() => {
@@ -18,6 +20,10 @@ async function main() {
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }))
+app.use(methodOverride("_method"));  // Convert Request into other forms like POST-->PUT
+app.engine("ejs", ejsMate);
+app.use(express.static(path.join(__dirname, '/public')));
+app.use('/itemImages', express.static(path.join(__dirname, 'itemImages')));
 
 app.get("/", (req, res) => {
     res.send("Root");
@@ -26,6 +32,7 @@ app.get("/", (req, res) => {
 //Index Route
 app.get("/top-deal", async (req, res) => {
     const allItems = await Item.find({});
+    console.log(allItems);
     res.render("./items/index.ejs", { allItems });
 })
 
@@ -45,6 +52,28 @@ app.get("/top-deal/:id", async (req, res) => {
 app.post("/top-deal", async (req, res) => {
     const newItem = new Item(req.body.item);
     await newItem.save();
+    res.redirect("/top-deal");
+})
+
+//Edit Route
+app.get("/top-deal/:id/edit", async (req, res) => {
+    let { id } = req.params;
+    const item = await Item.findById(id);
+    res.render("./items/edit.ejs", { item });
+})
+
+//Update Route
+app.put('/top-deal/:id', async (req, res) => {
+    let { id } = req.params;
+    await Item.findByIdAndUpdate(id, { ...req.body.item })
+    res.redirect(`/top-deal/${id}`);
+})
+
+//Delete Route
+app.delete("/top-deal/:id", async (req, res) => {
+    let { id } = req.params;
+    let deleteItem = await Item.findByIdAndDelete(id);
+    console.log(deleteItem);
     res.redirect("/top-deal");
 })
 
