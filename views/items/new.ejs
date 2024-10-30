@@ -1,19 +1,50 @@
 <% layout('/layouts/boilerplate.ejs')-%>
 <body>
-  <h2>Create a New Item</h2>
-  <form method="POST" action="/top-deal">
-    <input name="item[title]" type="text" placeholder="enter item name" />
-    <br />
-    <br />
-    <textarea
-      name="item[description]"
-      placeholder="enter description of item"
-    ></textarea>
-    <br /><br />
-    <input name="item[price]" type="number" placeholder="enter price of Item" />
-    <br /><br />
-    <input name="item[image]" placeholder="enter URL of Item" />
-    <br /><br />
-    <button>Add Item</button>
-  </form>
+  <div class="row">
+    <div class="col-8 offset-4">
+      <h2 class="my-3">Create a New Item</h2>
+      <form method="POST" action="/top-deal" class="mb-5">
+        <div class="col-6">
+          <label for="title" class="form-label">Product Name : </label>
+          <input
+            name="item[title]"
+            type="text"
+            placeholder="Enter Product Name"
+            class="form-control"
+          />
+        </div>
+        <br />
+
+        <div class="col-6">
+          <label for="description" class="form-label">Description : </label>
+          <textarea
+            name="item[description]"
+            placeholder="Enter Description of Product"
+            class="form-control"
+          ></textarea>
+        </div>
+        <br />
+        <div class="col-6">
+          <label for="Price" class="form-label">Price : (in &#8377;) </label>
+          <input
+            name="item[price]"
+            type="number"
+            placeholder="Enter Price of Product"
+            class="form-control"
+          />
+        </div>
+        <br />
+        <div class="col-6">
+          <label for="image" class="form-label">Image : </label>
+          <input
+            name="item[image]"
+            placeholder="Enter URL of Product"
+            class="form-control"
+          />
+        </div>
+        <br />
+        <button class="btn btn-warning">Add Product</button>
+      </form>
+    </div>
+  </div>
 </body>

@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride("_method"));  // Convert Request into other forms like POST-->PUT
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, '/public')));
-app.use('/itemImages', express.static(path.join(__dirname, 'itemImages')));
+app.use(express.static(path.join(__dirname, './public/itemImages')));
 
 app.get("/", (req, res) => {
     res.send("Root");
@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 //Index Route
 app.get("/top-deal", async (req, res) => {
     const allItems = await Item.find({});
-    console.log(allItems);
+    // console.log(allItems);
     res.render("./items/index.ejs", { allItems });
 })
 
@@ -45,6 +45,7 @@ app.get("/top-deal/new", (req, res) => {
 app.get("/top-deal/:id", async (req, res) => {
     let { id } = req.params;
     const item = await Item.findById(id);
+    console.log(item);
     res.render("./items/show.ejs", { item });
 })
 
@@ -77,6 +78,11 @@ app.delete("/top-deal/:id", async (req, res) => {
     res.redirect("/top-deal");
 })
 
+
+//Page Not Found
+app.use((req, res) => {
+    res.status(404).render("./items/Page_Not_Found.ejs");
+})
 
 
 

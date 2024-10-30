@@ -1,16 +1,49 @@
 <% layout('/layouts/boilerplate.ejs')-%>
 <body>
-  <h3>Edit This Item</h3>
-  <form method="post" action="/top-deal/<%= item._id%>?_method=PUT">
-    <input name="item[title]" type="text" value="<%= item.title%>" />
-    <br />
-    <br />
-    <textarea name="item[description]"><%= item.description%></textarea>
-    <br /><br />
-    <input name="item[price]" type="number" value="<%= item.price%>" />
-    <br /><br />
-    <input name="item[image]" value="<%= item.image%>" />
-    <br /><br />
-    <button>Edit Item</button>
-  </form>
+  <div class="row">
+    <h3 class="mt-4 offset-3">Edit This Product</h3>
+    <form
+      method="post"
+      action="/top-deal/<%= item._id%>?_method=PUT"
+      class="mb-5 offset-3"
+    >
+      <div class="col-6">
+        <label for="title" class="form-label">Product Name : </label>
+        <input
+          name="item[title]"
+          type="text"
+          value="<%= item.title%>"
+          class="form-control"
+        />
+      </div>
+      <br />
+      <div class="col-6">
+        <label for="description" class="form-label">Description : </label>
+        <textarea name="item[description]" class="form-control">
+<%= item.description%></textarea
+        >
+      </div>
+      <br />
+      <div class="col-6">
+        <label for="Price" class="form-label">Price : (in &#8377;) </label>
+        <input
+          name="item[price]"
+          type="number"
+          value="<%= item.price%>"
+          class="form-control"
+        />
+      </div>
+      <br />
+      <div class="col-6">
+        <label for="image" class="form-label">Image : </label>
+        <input
+          name="item[image]"
+          value="<%= item.image%>"
+          class="form-control"
+        />
+      </div>
+      <br />
+      <button class="btn btn-warning">Edit Product</button>
+    </form>
+  </div>
 </body>

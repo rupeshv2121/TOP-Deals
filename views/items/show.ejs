@@ -1,11 +1,15 @@
 <% layout('/layouts/boilerplate.ejs') -%>
 <body>
-  <h2><%=item.title%></h2>
-  <p><%=item.description%></p>
-  <p>&#8377;<%=item.price.toLocaleString("en-IN")%></p>
-  <!-- <h3><%= item.image%></h3> -->
-  <a href="/top-deal/<%=item._id%>/edit">Edit This Item</a>
-  <form method="POST" action="/top-deal/<%=item._id%>?_method=delete">
-    <button>Delete</button>
-  </form>
+  <div class="card">
+    <img src="<%= item.image %>" class="card-img-top" alt="item" />
+    <div class="card-body">
+      <p class="card-text"><%=item.title%></p>
+      <p><%=item.description%></p>
+      <p>&#8377;<%=item.price.toLocaleString("en-IN")%></p>
+      <a href="/top-deal/<%=item._id%>/edit">Edit This Item</a>
+      <form method="POST" action="/top-deal/<%=item._id%>?_method=delete">
+        <button class="btn btn-warning">Delete</button>
+      </form>
+    </div>
+  </div>
 </body>
