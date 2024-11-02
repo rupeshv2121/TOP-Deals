@@ -73,7 +73,7 @@ body{
     margin-bottom: 2rem;
 }
 
-.card-img-top{
+.indexImg{
     height: 15rem;
     width: 100% !important;
     object-fit: contain !important;
@@ -111,4 +111,46 @@ body{
 
 .addToCart{
 margin-top: 7.5rem !important;
+}
+
+/* Show Route */
+.showImg{
+    height: 20rem !important;
+    width: 40rem !important;
+}
+
+.rowContainer{
+    width: 150%;
+    border: 1px solid black;
+    width: 126%;
+    padding-left: 5rem;
+    border-radius: 2rem !important;
+    padding-bottom: 1rem !important;
+}
+
+.showDetails{
+    margin: 2rem 0rem 0rem 5rem;
+}
+
+.showButtons{
+    margin-top: 1rem;
+    width:12rem;
+    display: flex;
+    margin-left: 5rem !important;
+    justify-content: space-between;
+}
+
+/* Review */
+.reviewLine{
+    left: -28rem !important;
+    position: relative;
+    width: 90vw !important;
+}
+
+.reviewCard{
+    border: 1px solid gray !important;
+
+    border-radius: 1rem !important;
+    padding: 1rem;
+    margin-bottom: 1rem;
 }

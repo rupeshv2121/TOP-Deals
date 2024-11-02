@@ -3,7 +3,12 @@
   <div class="row">
     <div class="col-8 offset-4">
       <h2 class="my-3">Create a New Item</h2>
-      <form method="POST" action="/top-deal" class="mb-5">
+      <form
+        method="POST"
+        action="/top-deal"
+        class="mb-5 needs-validation"
+        novalidate
+      >
         <div class="col-6">
           <label for="title" class="form-label">Product Name : </label>
           <input
@@ -11,7 +16,10 @@
             type="text"
             placeholder="Enter Product Name"
             class="form-control"
+            required
           />
+          <div class="valid-feedback">Title Looks good!</div>
+          <div class="invalid-feedback">Please Enter Title Of the Product.</div>
         </div>
         <br />
 
@@ -21,7 +29,12 @@
             name="item[description]"
             placeholder="Enter Description of Product"
             class="form-control"
+            required
           ></textarea>
+          <div class="valid-feedback">Description Looks good!</div>
+          <div class="invalid-feedback">
+            Please Enter Description Of the Product.
+          </div>
         </div>
         <br />
         <div class="col-6">
@@ -31,7 +44,10 @@
             type="number"
             placeholder="Enter Price of Product"
             class="form-control"
+            required
           />
+          <div class="valid-feedback"></div>
+          <div class="invalid-feedback">Please Enter Price Of the Product.</div>
         </div>
         <br />
         <div class="col-6">
@@ -41,6 +57,24 @@
             placeholder="Enter URL of Product"
             class="form-control"
           />
+          <div class="valid-feedback"></div>
+          <div class="invalid-feedback">
+            Please Upload Image of the Product.
+          </div>
+        </div>
+        <br />
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="invalidCheck"
+            required
+          />
+          <label class="form-check-label" for="invalidCheck">
+            Agree to terms and conditions
+          </label>
+          <div class="valid-feedback">Looks good!</div>
         </div>
         <br />
         <button class="btn btn-warning">Add Product</button>

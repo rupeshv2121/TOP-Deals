@@ -1,10 +1,14 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const Item = require("./models/item");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
+const ExpressError = require('./utils/ExpressError');
+const item = require("./routes/item")
+const review = require("./routes/review")
+
+
 
 const MONGO_URL = "mongodb://localhost:27017/top_deals";
 main().then(() => {
@@ -23,67 +27,28 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride("_method"));  // Convert Request into other forms like POST-->PUT
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, '/public')));
-app.use(express.static(path.join(__dirname, './public/itemImages')));
+// app.use(express.static(path.join(__dirname, './public/itemImages')));
 
 app.get("/", (req, res) => {
     res.send("Root");
 })
 
-//Index Route
-app.get("/top-deal", async (req, res) => {
-    const allItems = await Item.find({});
-    // console.log(allItems);
-    res.render("./items/index.ejs", { allItems });
+//Item Route
+app.use("/top-deal", item);
+
+//Reviews Route
+app.use("/top-deal/:id/review", review);
+
+
+//Error
+app.all("*", (req, res, next) => {
+    next(new ExpressError(404, "Page Not Found"))
 })
 
-//New Route (Add new Item)
-app.get("/top-deal/new", (req, res) => {
-    res.render("./items/new.ejs");
+app.use((err, req, res, next) => {
+    let { statusCode = 500, message = "Something Went's Wrong" } = err;
+    res.status(statusCode).render("Error.ejs", { err });
 })
-
-//Show Route
-app.get("/top-deal/:id", async (req, res) => {
-    let { id } = req.params;
-    const item = await Item.findById(id);
-    console.log(item);
-    res.render("./items/show.ejs", { item });
-})
-
-//Create Route (Add item to the landing page)
-app.post("/top-deal", async (req, res) => {
-    const newItem = new Item(req.body.item);
-    await newItem.save();
-    res.redirect("/top-deal");
-})
-
-//Edit Route
-app.get("/top-deal/:id/edit", async (req, res) => {
-    let { id } = req.params;
-    const item = await Item.findById(id);
-    res.render("./items/edit.ejs", { item });
-})
-
-//Update Route
-app.put('/top-deal/:id', async (req, res) => {
-    let { id } = req.params;
-    await Item.findByIdAndUpdate(id, { ...req.body.item })
-    res.redirect(`/top-deal/${id}`);
-})
-
-//Delete Route
-app.delete("/top-deal/:id", async (req, res) => {
-    let { id } = req.params;
-    let deleteItem = await Item.findByIdAndDelete(id);
-    console.log(deleteItem);
-    res.redirect("/top-deal");
-})
-
-
-//Page Not Found
-app.use((req, res) => {
-    res.status(404).render("./items/Page_Not_Found.ejs");
-})
-
 
 
 // app.get("/testItem", async (req, res) => {

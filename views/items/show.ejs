@@ -1,15 +1,96 @@
 <% layout('/layouts/boilerplate.ejs') -%>
-<body>
-  <div class="card">
-    <img src="<%= item.image %>" class="card-img-top" alt="item" />
-    <div class="card-body">
-      <p class="card-text"><%=item.title%></p>
-      <p><%=item.description%></p>
-      <p>&#8377;<%=item.price.toLocaleString("en-IN")%></p>
-      <a href="/top-deal/<%=item._id%>/edit">Edit This Item</a>
-      <form method="POST" action="/top-deal/<%=item._id%>?_method=delete">
-        <button class="btn btn-warning">Delete</button>
-      </form>
+<div class="card mb-3 offset-3 mt-3 mb-5" style="max-width: 540px">
+  <h2 class="mx-4">Product Details</h2>
+  <div class="row row-cols-10 g-0 rowContainer mb-5">
+    <div class="col-md-4">
+      <img
+        src="<%=item.image%>"
+        class="img-fluid rounded-start showImg"
+        alt="product"
+        style="width: 35rem"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body showDetails" style="width: 15rem">
+        <h5 class="card-title fs-1 mb-0"><%=item.title%></h5>
+        <p class="card-text fs-4"><%=item.description%></p>
+        <p class="card-text fs-2">
+          &#8377;<%=item.price.toLocaleString("en-In")%>
+        </p>
+      </div>
+      <div class="showButtons">
+        <a href="/top-deal/<%=item._id%>/edit" class="btn btn-warning px-4"
+          >Edit</a
+        >
+        <form method="POST" action="/top-deal/<%=item._id%>?_method=DELETE">
+          <button class="btn btn-danger px-4">Delete</button>
+        </form>
+      </div>
     </div>
   </div>
-</body>
+
+  <div class="offset-2 col-8">
+    <hr class="reviewLine" />
+    <h4>Leave A Review</h4>
+    <form
+      action="/top-deal/<%=item._id%>/review"
+      method="POST"
+      novalidate
+      class="needs-validation mb-4"
+    >
+      <div class="my-2">
+        <label for="rating">Rating</label>
+        <input
+          type="range"
+          class="form-range"
+          value="2"
+          min="1"
+          max="5"
+          id="rating"
+          name="review[rating]"
+        />
+      </div>
+
+      <div class="form-floating mb-3">
+        <textarea
+          class="form-control"
+          placeholder="Leave a comment here"
+          id="comment"
+          name="review[comment]"
+          style="height: 7rem; width: 31rem"
+          required
+        ></textarea>
+        <label for="comment">Comments</label>
+        <div class="valid-feedback"></div>
+        <div class="invalid-feedback">Please Write a Comment !</div>
+      </div>
+      <button class="btn btn-outline-dark">Submit</button>
+    </form>
+
+    <hr style="width: 50rem; position: relative; left: -12rem" />
+
+    <h4 class="text-center my-5"><b>All Reviews</b></h4>
+    <div class="row" style="width: 70rem; margin-left: -14rem">
+      <% for(let rev of item.review){ %>
+      <div class="card col-3 reviewCard ms-3">
+        <div class="card-body">
+          <div class="card-title">
+            <b><i>Rupesh</i></b>
+          </div>
+          <div class="card-title">Rating : <%=rev.rating%> Star</div>
+          <div class="card-title"><%= rev.comment %></div>
+          <div class="card-title">Date : <%= rev.createdAt %></div>
+          <form
+            method="POST"
+            action="/top-deal/<%=item._id%>/review/<%=rev._id%>?_method=delete"
+          >
+            <button class="btn-sm btn-danger" style="border-radius: 2rem">
+              Delete
+            </button>
+          </form>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
