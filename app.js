@@ -7,6 +7,9 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require('./utils/ExpressError');
 const item = require("./routes/item")
 const review = require("./routes/review")
+const session = require("express-session");
+const flash = require("connect-flash");
+
 
 
 
@@ -29,8 +32,29 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, '/public')));
 // app.use(express.static(path.join(__dirname, './public/itemImages')));
 
+const sessionOptions = {
+    secret: "mySuperSecretCode",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // in milli Seconds
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+        httpOnly: true,  //for security purpose -> cross scriptiong attacks
+    }
+}
+
 app.get("/", (req, res) => {
     res.send("Root");
+})
+
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash('error');
+    // console.log(res.locals.success);
+    next();
 })
 
 //Item Route

@@ -31,6 +31,10 @@ router.get("/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
     const item = await Item.findById(id).populate("review");
     // console.log(item);
+    if (!item) {
+        req.flash("error", "Item You requested, Does not exist");
+        res.redirect('/top-deal');
+    }
     res.render("./items/show.ejs", { item });
 }))
 
@@ -38,6 +42,7 @@ router.get("/:id", wrapAsync(async (req, res) => {
 router.post("/", validateItem, wrapAsync(async (req, res, next) => {
     const newItem = new Item(req.body.item);
     await newItem.save();
+    req.flash("success", "New Item Added");
     res.redirect("/top-deal");
 }))
 
@@ -45,6 +50,9 @@ router.post("/", validateItem, wrapAsync(async (req, res, next) => {
 router.get("/:id/edit", wrapAsync(async (req, res) => {
     let { id } = req.params;
     const item = await Item.findById(id);
+    if (!item) {
+        req.flash('error', "Listing you requested, Does not exist");
+    }
     res.render("./items/edit.ejs", { item });
 }))
 
@@ -52,6 +60,7 @@ router.get("/:id/edit", wrapAsync(async (req, res) => {
 router.put('/:id', validateItem, wrapAsync(async (req, res) => {
     let { id } = req.params;
     await Item.findByIdAndUpdate(id, { ...req.body.item })
+    req.flash("success", "Product Updated Successfully");
     res.redirect(`/top-deal/${id}`);
 }))
 
@@ -60,6 +69,7 @@ router.delete("/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
     let deleteItem = await Item.findByIdAndDelete(id);
     console.log(deleteItem);
+    req.flash("success", "Item Deleted Successfully");
     res.redirect("/top-deal");
 }))
 

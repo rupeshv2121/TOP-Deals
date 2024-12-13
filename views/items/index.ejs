@@ -1,34 +1,32 @@
 <% layout('/layouts/boilerplate.ejs') -%>
-<body>
-  <div class="container my-4">
-    <h2 class="text-center mb-4">All Items</h2>
-    <div class="row row-cols-lg-4 row-cols-sm-2 row-cols-md-3 g-4">
-      <% for (item of allItems) { %>
-      <div class="col">
-        <div class="card">
-          <a href="/top-deal/<%= item._id %>" class="item-link">
-            <img
-              src="<%= item.image %>"
-              class="card-img-top indexImg"
-              alt="item"
-            />
+<div class="container my-4">
+  <h2 class="text-center mb-4">All Items</h2>
+  <div class="row row-cols-lg-4 row-cols-sm-2 row-cols-md-3 g-4">
+    <% for (item of allItems) { %>
+    <div class="col">
+      <div class="card">
+        <a href="/top-deal/<%= item._id %>" class="item-link">
+          <img
+            src="<%= item.image %>"
+            class="card-img-top indexImg"
+            alt="item"
+          />
 
-            <div class="card-img-overlay">
-              <p class="card-text text-center">
-                <button class="btn btn-primary addToCart">Add To Cart</button>
-              </p>
-            </div>
+          <div class="card-img-overlay">
+            <p class="card-text text-center">
+              <button class="btn btn-primary addToCart">Add To Cart</button>
+            </p>
+          </div>
 
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title ms-3 mt-3"><%= item.title %></h5>
-              <p class="card-text ms-3 mb-3">
-                &#8377;<%= item.price.toLocaleString("en-IN") %>
-              </p>
-            </div>
-          </a>
-        </div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title ms-3 mt-3"><%= item.title %></h5>
+            <p class="card-text ms-3 mb-3">
+              &#8377;<%= item.price.toLocaleString("en-IN") %>
+            </p>
+          </div>
+        </a>
       </div>
-      <% } %>
     </div>
+    <% } %>
   </div>
-</body>
+</div>
