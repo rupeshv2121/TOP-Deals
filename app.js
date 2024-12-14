@@ -5,11 +5,14 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require('./utils/ExpressError');
-const item = require("./routes/item")
-const review = require("./routes/review")
+const itemRouter = require("./routes/item")
+const reviewRouter = require("./routes/review")
 const session = require("express-session");
 const flash = require("connect-flash");
-
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user");
+const userRouter = require("./routes/user");
 
 
 
@@ -50,6 +53,14 @@ app.get("/", (req, res) => {
 app.use(session(sessionOptions));
 app.use(flash());
 
+//passport is used after session MiddleWare
+app.use(passport.initialize());
+app.use(passport.session()); // same user browser from page to page.
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());  // to serialize into the session(means to store info related to user)
+passport.deserializeUser(User.deserializeUser()); // to de-serialize into the session(means to remove info related to user)
+
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash('error');
@@ -57,11 +68,26 @@ app.use((req, res, next) => {
     next();
 })
 
+// app.get("/demoUser", async (req, res) => {
+//     let fakeUser = new User({
+//         email: "student@gmail.com",
+//         username: "delta-student",
+//     })
+
+//     //Convenience method to register a new user instance with a given password. Automatically check new user
+//     // register(user, password, callback) 
+//     let registeredUser = await User.register(fakeUser, "helloWorld");
+//     res.send(registeredUser);
+// })
+
 //Item Route
-app.use("/top-deal", item);
+app.use("/top-deal", itemRouter);
 
 //Reviews Route
-app.use("/top-deal/:id/review", review);
+app.use("/top-deal/:id/review", reviewRouter);
+
+//User Route
+app.use("/", userRouter);
 
 
 //Error
