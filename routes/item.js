@@ -4,6 +4,7 @@ const wrapAsync = require("../utils/wrapAsync.js");
 const ExpressError = require('../utils/ExpressError.js');
 const { itemSchema } = require("../Schema.js");
 const Item = require("../models/item.js");
+const { isLoggedIn } = require("../middleware.js")
 
 const validateItem = (req, res, next) => {
     let { error } = itemSchema.validate(req.body);
@@ -22,8 +23,8 @@ router.get("/", wrapAsync(async (req, res) => {
 }))
 
 //New Route (Add new Item)
-router.get("/new", (req, res) => {
-    res.render("./items/new.ejs");
+router.get("/new", isLoggedIn, (req, res) => {
+    res.render('./items/new.ejs');
 })
 
 //Show Route
@@ -39,7 +40,7 @@ router.get("/:id", wrapAsync(async (req, res) => {
 }))
 
 //Create Route (Add item to the landing page)
-router.post("/", validateItem, wrapAsync(async (req, res, next) => {
+router.post("/", isLoggedIn, validateItem, wrapAsync(async (req, res, next) => {
     const newItem = new Item(req.body.item);
     await newItem.save();
     req.flash("success", "New Item Added");
@@ -47,7 +48,7 @@ router.post("/", validateItem, wrapAsync(async (req, res, next) => {
 }))
 
 //Edit Route
-router.get("/:id/edit", wrapAsync(async (req, res) => {
+router.get("/:id/edit", isLoggedIn, wrapAsync(async (req, res) => {
     let { id } = req.params;
     const item = await Item.findById(id);
     if (!item) {
@@ -57,7 +58,7 @@ router.get("/:id/edit", wrapAsync(async (req, res) => {
 }))
 
 //Update Route
-router.put('/:id', validateItem, wrapAsync(async (req, res) => {
+router.put('/:id', isLoggedIn, validateItem, wrapAsync(async (req, res) => {
     let { id } = req.params;
     await Item.findByIdAndUpdate(id, { ...req.body.item })
     req.flash("success", "Product Updated Successfully");
@@ -65,7 +66,7 @@ router.put('/:id', validateItem, wrapAsync(async (req, res) => {
 }))
 
 //Delete Route
-router.delete("/:id", wrapAsync(async (req, res) => {
+router.delete("/:id", isLoggedIn, wrapAsync(async (req, res) => {
     let { id } = req.params;
     let deleteItem = await Item.findByIdAndDelete(id);
     console.log(deleteItem);

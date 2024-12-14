@@ -19,9 +19,23 @@
         <a class="nav-link" href="/top-deal">All Items</a>
         <a class="nav-link" href="/top-deal/new">Add New Item</a>
       </div>
+      <div class="navbar-nav ms-auto">
+        <!-- <a class="nav-link active" aria-current="page" href="#"
+          ><i class="fa-solid fa-user-large fa-sm"></i> &nbsp;Account</a
+        >
+        <a class="nav-link" href="#"
+          ><i class="fa-brands fa-opencart"></i>&nbsp; Cart</a
+        > -->
+        <% if(!currUser){%>
+        <a class="nav-link" href="/signup">Sign-Up</a>
+        <a class="nav-link" href="/login">Log-In</a>
+        <%}%> <% if(currUser) {%>
+        <a class="nav-link" href="/logout">Log-Out</a>
+        <%}%>
+      </div>
     </div>
 
-    <form class="d-flex">
+    <!-- <form class="d-flex">
       <input
         class="form-control me-2 search-nav"
         type="search"
@@ -31,17 +45,6 @@
       <button class="btn btn-outline-success searchBtn" type="submit">
         Search
       </button>
-    </form>
-
-    <div class="collapse navbar-collapse account_cart" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#"
-          ><i class="fa-solid fa-user-large fa-sm"></i> &nbsp;Account</a
-        >
-        <a class="nav-link" href="#"
-          ><i class="fa-brands fa-opencart"></i>&nbsp; Cart</a
-        >
-      </div>
-    </div>
+    </form> -->
   </div>
 </nav>
