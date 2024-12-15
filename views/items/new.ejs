@@ -8,6 +8,7 @@
         action="/top-deal"
         class="mb-5 needs-validation"
         novalidate
+        enctype="multipart/form-data"
       >
         <div class="col-6">
           <label for="title" class="form-label">Product Name : </label>
@@ -48,15 +49,11 @@
           />
           <div class="valid-feedback"></div>
           <div class="invalid-feedback">Please Enter Price Of the Product.</div>
-        </div>
+
         <br />
-        <div class="col-6">
-          <label for="image" class="form-label">Image : </label>
-          <input
-            name="item[image]"
-            placeholder="Enter URL of Product"
-            class="form-control"
-          />
+        <div class="col-12">
+          <label for="image" class="form-label">Upload Product Image : </label>
+          <input name="item[image]" class="form-control" type="file" required />
           <div class="valid-feedback"></div>
           <div class="invalid-feedback">
             Please Upload Image of the Product.

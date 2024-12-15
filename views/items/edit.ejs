@@ -7,6 +7,7 @@
     action="/top-deal/<%= item._id%>?_method=PUT"
     class="mb-5 offset-3 needs-validation"
     novalidate
+    enctype="multipart/form-data"
   >
     <div class="col-6">
       <label for="title" class="form-label">Product Name : </label>
@@ -45,16 +46,14 @@
       <div class="invalid-feedback">Please Enter Price of the Product.</div>
     </div>
     <br />
+    <div class="mb-3">
+      <p>Original Listing Image :</p>
+      <img src="<%=originalImageUrl%>" style="height: 15rem" />
+    </div>
     <div class="col-6">
-      <label for="image" class="form-label">Image : </label>
-      <input
-        name="item[image]"
-        value="<%= item.image%>"
-        class="form-control"
-        required
-      />
+      <label for="image" class="form-label">upload New Image : </label>
+      <input name="item[image]" type="file" class="form-control" />
       <div class="valid-feedback"></div>
-      <div class="invalid-feedback">Please Upload Image of the Product.</div>
     </div>
     <br />
     <button class="btn btn-warning">Edit Product</button>

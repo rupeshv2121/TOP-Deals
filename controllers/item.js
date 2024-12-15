@@ -22,8 +22,11 @@ module.exports.showItem = async (req, res) => {
 }
 
 module.exports.createItem = async (req, res, next) => {
+    let url = req.file.path;
+    let filename = req.file.filename;
     const newItem = new Item(req.body.item);
     newItem.owner = req.user._id;
+    newItem.image = { url, filename };
     await newItem.save();
     req.flash("success", "New Item Added");
     res.redirect("/top-deal");
@@ -35,12 +38,22 @@ module.exports.renderEditForm = async (req, res) => {
     if (!item) {
         req.flash('error', "Listing you requested, Does not exist");
     }
-    res.render("./items/edit.ejs", { item });
+    let originalImageUrl = item.image.url;
+    originalImageUrl = originalImageUrl.replace("/upload", "/upload/h_300,w_250");
+    res.render("./items/edit.ejs", { item, originalImageUrl });
 }
 
 module.exports.updateItem = async (req, res) => {
     let { id } = req.params;
-    await Item.findByIdAndUpdate(id, { ...req.body.item })
+    let item = await Item.findByIdAndUpdate(id, { ...req.body.item })
+
+    if (typeof req.file !== "undefined") {
+        let url = req.file.path;
+        let filename = req.file.filename;
+        item.image = { url, filename };
+        await item.save();
+    }
+
     req.flash("success", "Product Updated Successfully");
     res.redirect(`/top-deal/${id}`);
 }

@@ -18,9 +18,8 @@ const itemSchema = new Schema({
         required: true
     },
     image: {
-        type: String,
-        default: "/itemImages/download.jpeg",
-        set: (v) => v === "" ? "/itemImages/download.jpeg" : v
+        url: String,
+        filename: String,
     },
     review: [
         {
