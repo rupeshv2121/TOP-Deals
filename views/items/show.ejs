@@ -13,11 +13,15 @@
     <div class="col-md-8">
       <div class="card-body showDetails" style="width: 15rem">
         <h5 class="card-title fs-1 mb-0"><%=item.title%></h5>
+        <i class="card-text fs-4">created by : <%=item.owner.username%></i>
+        <br />
         <p class="card-text fs-4"><%=item.description%></p>
         <p class="card-text fs-2">
           &#8377;<%=item.price.toLocaleString("en-In")%>
         </p>
       </div>
+
+      <% if(currUser && currUser._id.equals(item.owner._id)) {%>
       <div class="showButtons">
         <a href="/top-deal/<%=item._id%>/edit" class="btn btn-warning px-4"
           >Edit</a
@@ -26,11 +30,13 @@
           <button class="btn btn-danger px-4">Delete</button>
         </form>
       </div>
+      <%}%>
     </div>
   </div>
 
   <div class="offset-2 col-8">
     <hr class="reviewLine" />
+    <% if(currUser) {%>
     <h4>Leave A Review</h4>
     <form
       action="/top-deal/<%=item._id%>/review"
@@ -66,8 +72,8 @@
       </div>
       <button class="btn btn-outline-dark">Submit</button>
     </form>
-
     <hr style="width: 50rem; position: relative; left: -12rem" />
+    <%}%>
 
     <h4 class="text-center my-5"><b>All Reviews</b></h4>
     <div class="row" style="width: 70rem; margin-left: -14rem">
@@ -75,7 +81,7 @@
       <div class="card col-3 reviewCard ms-3">
         <div class="card-body">
           <div class="card-title">
-            <b><i>Rupesh</i></b>
+            <b><i>@<%=rev.author.username%></i></b>
           </div>
           <div class="card-title">Rating : <%=rev.rating%> Star</div>
           <div class="card-title"><%= rev.comment %></div>
