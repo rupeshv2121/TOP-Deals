@@ -1,7 +1,46 @@
 <% layout('/layouts/boilerplate.ejs') -%>
+<script>
+  const mapToken = "<%=process.env.MAP_TOKEN%> ";
+</script>
+
 <div class="container my-4">
-  <h2 class="text-center mb-4">All Items</h2>
-  <div class="row row-cols-lg-4 row-cols-sm-2 row-cols-md-3 g-4">
+  <!-- <h2 class="text-center mb-4">All Items</h2> -->
+  <div id="filter">
+    <div class="filter">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Trending</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-person-dress"></i></div>
+      <p>Female Clothes</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-person"></i></div>
+      <p>Male Clothes</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-laptop"></i></div>
+      <p>Electronics</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-shoe-prints"></i></div>
+      <p>Footwear</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-shirt"></i></div>
+      <p>Clothes</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+      <p>Beauty</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-baby"></i></div>
+      <p>Child Care</p>
+    </div>
+  </div>
+
+  <div class="row row-cols-lg-4 row-cols-sm-2 row-cols-md-3 g-4 mt-4">
     <% for (item of allItems) { %>
     <div class="col">
       <div class="card">
@@ -29,4 +68,9 @@
     </div>
     <% } %>
   </div>
+  <hr />
+  <div class="col-8 offset-4 mb-3">
+    <div id="map"></div>
+  </div>
 </div>
+<script src="/js/map.js"></script>

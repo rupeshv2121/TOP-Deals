@@ -2,7 +2,7 @@
   class="navbar navbar-expand-md navbar-light bg-light border-bottom sticky-top"
 >
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"
+    <a class="navbar-brand" href="/top-deal"
       ><i class="fa-solid fa-basket-shopping" style="color: #ffd43b"></i
     ></a>
     <button
@@ -15,10 +15,26 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/top-deal">All Items</a>
-        <a class="nav-link" href="/top-deal/new">Add New Item</a>
+        <!-- <a class="nav-link" href="/">Home</a> -->
+        <a class="nav-link" href="/top-deal">All Products</a>
+        <a class="nav-link" href="/top-deal/new">Add New Product</a>
       </div>
+
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex">
+          <input
+            class="form-control me-2 search-nav"
+            type="search"
+            placeholder="Search Product"
+            aria-label="Search"
+          />
+          <button class="btn btn-warning searchBtn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Search
+          </button>
+        </form>
+      </div>
+
       <div class="navbar-nav ms-auto">
         <!-- <a class="nav-link active" aria-current="page" href="#"
           ><i class="fa-solid fa-user-large fa-sm"></i> &nbsp;Account</a
@@ -27,24 +43,12 @@
           ><i class="fa-brands fa-opencart"></i>&nbsp; Cart</a
         > -->
         <% if(!currUser){%>
-        <a class="nav-link" href="/signup">Sign-Up</a>
-        <a class="nav-link" href="/login">Log-In</a>
+        <a class="nav-link" href="/signup"><b>Sign-Up</b></a>
+        <a class="nav-link" href="/login"><b>Log-In</b></a>
         <%}%> <% if(currUser) {%>
-        <a class="nav-link" href="/logout">Log-Out</a>
+        <a class="nav-link" href="/logout"><b>Log-Out</b></a>
         <%}%>
       </div>
     </div>
-
-    <!-- <form class="d-flex">
-      <input
-        class="form-control me-2 search-nav"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button class="btn btn-outline-success searchBtn" type="submit">
-        Search
-      </button>
-    </form> -->
   </div>
 </nav>

@@ -31,7 +31,12 @@ const itemSchema = new Schema({
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+
+    // category: {
+    //     type: String,
+    //     enum: ["Trending", "Female Clothes", "Male Clothes", "Electronics", "Footwear", "Beauty", "Childcare"],
+    // }
 
 })
 
