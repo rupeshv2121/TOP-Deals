@@ -1,19 +1,38 @@
+<hr />
+<style>
+  @media (max-width: 579px) {
+    .email {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 11px;
+    }
+    #about-website {
+      font-size: 14px;
+    }
+  }
+</style>
+
 <footer class="footer sticky-bottom offset-0">
-  <div class="container border-top f-info">
-    <div class="row border-bottom">
+  <div class="container f-info">
+    <div class="row" id="about-website" style="margin: auto">
       <div class="col description">
         TOP DEALS
-        <p>
+        <p class="about-website">
           TOP DEAL is an e-commerce platform offering competitive prices on a
           wide range of products, from electronics to fashion, with a focus on
           quality deals and customer satisfaction.
         </p>
       </div>
-      <div class="col">
+      <div class="col mx-5-md mb-5-sm mt-2 address">
         <div class="info">
-          <p>Aligarh, Uttar Pradesh</p>
-          <p><i class="fa-solid fa-envelope"></i> rupeshvarshney7@gmail.com</p>
-          <p><i class="fa-solid fa-phone"></i> +91 XXXXXXXXX</p>
+          <p class="about-me">Aligarh, Uttar Pradesh</p>
+          <p class="about-me email">
+            <i class="fa-solid fa-envelope"></i> rupeshvarshney7@gmail.com
+          </p>
+          <p class="about-me">
+            <i class="fa-solid fa-phone"></i> +91 XXXXXXXXX
+          </p>
         </div>
         <div class="f-info-socials">
           <i class="fa-brands fa-whatsapp"></i>
@@ -22,7 +41,8 @@
         </div>
       </div>
     </div>
-    <div class="row aman">
+    <hr />
+    <div class="row">
       <div class="col copyright">&copy; TOP DEALS</div>
     </div>
   </div>

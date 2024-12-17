@@ -31,6 +31,7 @@ body{
 }
 
 .search-nav{
+    border-radius:25px !important ;
     width: 19rem !important;
 }
 
@@ -74,12 +75,13 @@ body{
 /* Footer CSS */
 .copyright{
     text-align: center;
-    padding: 1rem;
+    padding:0 0 1rem 0;
 }
 
 .f-info{
     background-color: #ffffff;
     width: 100% !important;
+    margin:auto !important;
 }
 
 .description{
@@ -93,6 +95,10 @@ body{
 .f-info-socials{
     font-size: 1.5rem;
     padding-left: 7rem;
+}
+
+.about-me {
+    margin-bottom: 0.5rem;
 }
 
 /* Cards */
@@ -117,7 +123,7 @@ body{
     font-weight: 400 !important;
 }
 
-.container{
+.item-container{
     margin-left: 3.5rem !important;
 }
 
@@ -187,4 +193,177 @@ margin-top: 7.5rem !important;
 #map{
     height: 300px;
     width: 400px;
+}
+
+
+@media(max-width:1000px){
+    .info{
+        padding: 0;
+    }
+    .description{
+        padding-top: 5px !important;
+    }
+
+    .map{
+        margin-left: 8rem !important;
+    }
+
+    .logo{
+        width: 2rem !important;
+        margin-right: 0 !important;
+    }
+
+    .fa-basket-shopping{
+        position: relative;
+        left: -1.5rem;
+    }
+
+    .nav-link{
+        font-size: 14px;
+        padding-left: 1.2rem !important;
+    }
+
+    .search-nav{
+        height: 2rem !important;
+        width: 14rem !important;
+        font-size: 0.85rem !important;
+    }
+
+    .searchBtn {
+        font-size: 0.85rem !important;
+    }
+}
+
+@media(max-width:950px) {
+    .item-container{
+        margin-left: 2rem !important;
+    }
+}
+
+@media(max-width:768px) {
+    #filter{
+        display: none;
+    }
+
+    .item-container{
+        margin: 0 !important;
+    }
+
+    .product-listed{
+        width: 40rem !important;
+        margin: 0 2rem 0 2rem !important;
+    }
+
+    .indexImg{
+        height: 10rem !important;
+    }
+
+    .f-info-socials{
+        padding-left: 0 !important;
+    }
+
+    .border-up-map {
+        width: 40rem !important;
+    }
+    
+    .map{
+        margin-left: 11rem !important;
+    }
+
+    #map{
+        height: 200px !important;
+        width: 300px !important;
+        /* margin-left: 11rem !important; */
+    }
+}
+
+@media(max-width:679px ){
+    .product-listed{
+        width: 33rem !important;
+    }
+    .border-up-map{
+        width: 30rem !important;
+    }
+}
+
+@media(max-width:591px) {
+    .product-listed{
+        width: 25rem !important;
+    }
+    .map{
+        margin-left: 0rem !important;
+    }
+    #map{
+        margin-left: 2rem !important;
+    }
+
+    .email {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 11px;
+      }
+      #about-website {
+        font-size: 14px;
+      }
+}
+
+@media(max-width:515px) {
+    .map{
+        margin-left: 4rem !important;
+    }
+ #about-website{
+        display: inline-block !important;
+        flex-direction: row !important;
+    }
+    .email{
+        justify-content: start !important;
+    }
+    
+    .address{
+        padding: 0 2rem 0 2rem !important;
+        margin-bottom: 0rem  !important;
+    }
+
+    .f-info{
+        width: 24rem !important;
+        /* margin-top: 1rem !important; */
+    }
+
+    .border-up-map{
+        width: 26rem !important;
+    }
+}
+
+@media(max-width:465px) {
+    #map{
+        width: 350px !important;
+        height: 200px;
+        margin-left: 1rem !important;
+    }
+
+    .map{
+        margin-left: 1rem !important;
+    }
+
+    .product-listed{
+        margin-left: 1rem !important;
+    }
+}
+
+@media(max-width:440px) {
+    .product-listed{
+        width: 20rem !important;
+        margin-left: 3.5rem !important;
+        margin-right: 0rem !important;
+    }
+    .item-card{
+        width: 16rem !important;
+    }
+    .col-card-item {
+        width: 16rem !important;
+    }
+    .card-img-overlay{
+        width: 16rem !important;
+    }
 }
