@@ -1,7 +1,7 @@
 <% layout('/layouts/boilerplate.ejs')-%>
 <body>
   <div class="row">
-    <div class="col-8 offset-4">
+    <div class="col-8 offset-4" id="col-container">
       <h2 class="my-3">Create a New Item</h2>
       <form
         method="POST"
@@ -10,7 +10,7 @@
         novalidate
         enctype="multipart/form-data"
       >
-        <div class="col-6">
+        <div class="col-8" id="new-product-entries">
           <label for="title" class="form-label">Product Name : </label>
           <input
             name="item[title]"
@@ -24,7 +24,7 @@
         </div>
         <br />
 
-        <div class="col-6">
+        <div class="col-8" id="new-product-entries">
           <label for="description" class="form-label">Description : </label>
           <textarea
             name="item[description]"
@@ -38,7 +38,7 @@
           </div>
         </div>
         <br />
-        <div class="col-6">
+        <div class="col-8" id="new-product-entries">
           <label for="Price" class="form-label">Price : (in &#8377;) </label>
           <input
             name="item[price]"
@@ -51,7 +51,7 @@
           <div class="invalid-feedback">Please Enter Price Of the Product.</div>
 
         <br />
-        <div class="col-12">
+        <div class="col-12" id="new-product-entries">
           <label for="image" class="form-label">Upload Product Image : </label>
           <input name="item[image]" class="form-control" type="file" required />
           <div class="valid-feedback"></div>
@@ -60,7 +60,7 @@
           </div>
         </div>
         <br />
-        <div class="form-check">
+        <div class="form-check" id="new-product-entries">
           <input
             class="form-check-input"
             type="checkbox"
@@ -74,7 +74,7 @@
           <div class="valid-feedback">Looks good!</div>
         </div>
         <br />
-        <button class="btn btn-warning">Add Product</button>
+        <button class="btn btn-warning" id="add-product-btn">Add Product</button>
       </form>
     </div>
   </div>

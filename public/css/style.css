@@ -5,6 +5,7 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 100% !important;
 }
 
 .container{
@@ -148,9 +149,26 @@ margin-top: 7.5rem !important;
 }
 
 /* Show Route */
+.product-container{
+    width: 540px
+}
 .showImg{
     height: 20rem !important;
     width: 40rem !important;
+}
+
+#owner-name {
+    font-size: 18px !important;
+    margin-bottom: 2rem !important;
+}
+
+.title{
+    font-size: 2rem !important;
+}
+
+.show-heading{
+    margin-left: 1.5rem;
+    width: 14rem;
 }
 
 .rowContainer{
@@ -163,7 +181,12 @@ margin-top: 7.5rem !important;
 }
 
 .showDetails{
+    width: 15rem;
     margin: 2rem 0rem 0rem 5rem;
+}
+
+.product-description {
+    font-size: 1.58rem !important;
 }
 
 .showButtons{
@@ -193,6 +216,28 @@ margin-top: 7.5rem !important;
 #map{
     height: 300px;
     width: 400px;
+}
+
+@media(max-width: 1105px) {
+    .product-container {
+        margin: auto !important;
+        
+    }
+
+    .product-img{
+        height: 19rem !important;
+        width: 11rem !important;
+        padding: 0.8rem 0 0 0 !important;
+    }
+
+    .showImg{
+        height: 16rem !important;
+        width: 11rem !important;
+    }
+
+    .rowContainer{
+        padding-bottom: 0 !important;
+    }
 }
 
 
@@ -240,7 +285,23 @@ margin-top: 7.5rem !important;
     }
 }
 
+@media(max-width:850px) {
+    .rowContainer{
+        width: 38rem !important;
+        padding-left: 3rem !important;
+    }
+}
+
 @media(max-width:768px) {
+    /* #navbar-nav{
+        margin: 0 !important;
+        margin-left: -2rem !important;
+    }
+
+    #search-bar{
+        margin: 0 !important;
+    } */
+
     #filter{
         display: none;
     }
@@ -251,7 +312,7 @@ margin-top: 7.5rem !important;
 
     .product-listed{
         width: 40rem !important;
-        margin: 0 2rem 0 2rem !important;
+        margin: 0 0rem 0 -3rem !important;
     }
 
     .indexImg{
@@ -263,7 +324,7 @@ margin-top: 7.5rem !important;
     }
 
     .border-up-map {
-        width: 40rem !important;
+        width: 31rem !important;
     }
     
     .map{
@@ -273,17 +334,88 @@ margin-top: 7.5rem !important;
     #map{
         height: 200px !important;
         width: 300px !important;
-        /* margin-left: 11rem !important; */
+    }
+
+    .product-details{
+        width: 20rem !important;
+    }
+
+    .rowContainer{
+        margin:auto !important;
+    }
+
+    .product-container{
+        margin:auto !important;
+    }
+
+    .item-container-show{
+        margin: auto !important;
+        margin-right: 7rem !important;
+    }
+
+    #col-container, #login-container, #login-title, #signUp-title, #signUp-container{
+        margin-left: 7rem !important;
+    }
+
+    #new-product-entries, #login-info, #signUp-entries{
+        width: 20rem !important;
     }
 }
 
 @media(max-width:679px ){
     .product-listed{
-        width: 33rem !important;
+        margin: auto !important;
+        width: 35rem !important;
     }
     .border-up-map{
         width: 30rem !important;
     }
+}
+
+@media(max-width:630px) {
+    .showDetails{
+        width: 14rem !important;
+        margin: 1.5rem 0 0 2rem !important;
+    }
+
+    .product-details{
+        width: 16rem !important;
+    }
+
+    .rowContainer{
+        width: 27rem !important;
+    }
+
+    .title{
+        display: inline;
+        font-size: 1.5rem !important;
+    }
+    #owner-name {
+        font-size: 15px !important;
+    }
+
+    .product-description{
+        font-size: 1.4rem !important;
+        margin-top: -1rem !important;
+        margin-bottom: 10px !important;
+    }
+
+    .product-img{
+        height: 15rem !important;
+        width: 6rem !important;
+    }
+
+    .showImg{
+        height: 11rem !important;
+        width: 6rem !important;
+    }
+
+    .show-heading{
+        font-size: 24px !important;
+        margin-left: 5rem !important;
+    }
+   
+
 }
 
 @media(max-width:591px) {
@@ -306,6 +438,39 @@ margin-top: 7.5rem !important;
       #about-website {
         font-size: 14px;
       }
+}
+
+@media(max-width:550px) {
+    #rowContainer{
+        display: flex !important;
+        flex-direction: column !important;
+        width: 18rem !important;
+    }
+
+    .showImg{
+        width: 10rem !important;
+    }
+
+    .product-img{
+        width: 10rem !important;
+        height: 12rem !important;
+    }
+
+    .showDetails{
+        margin: 0 !important;
+    }
+
+    .product-container{
+        width: 325px !important;
+    }
+
+    #col-container{
+        margin-left: 5rem !important;
+    }
+
+    #login-container, #login-title, #signUp-container, #signUp-title{
+        margin-left: 4rem !important;
+    }
 }
 
 @media(max-width:515px) {
@@ -365,5 +530,80 @@ margin-top: 7.5rem !important;
     }
     .card-img-overlay{
         width: 16rem !important;
+    }
+    .border-up-map{
+        width: 22rem !important;
+    }
+    #map{
+        margin-left: 0 !important;
+        width: 300px !important;
+    }
+
+    #col-container{
+        margin-left: 4rem !important;
+    }
+
+    #login-container, #login-title, #signUp-container, #signUp-title{
+        margin-left: 2rem !important;
+    }
+
+    #new-product-entries{
+        width: 18rem !important;
+    }
+
+    #login-info, #signUp-entries{
+        width: 14rem !important;
+    }
+}
+
+@media(max-width:406px) {
+    .product-listed{
+        width: 15rem !important;
+        margin-left: 0rem !important;
+    }
+
+    .border-up-map{
+        display: none !important;
+        width: 15rem !important;
+    }
+    #map{
+        width: 250px !important;
+    }
+}
+
+@media(max-width:385px) {
+    .f-info{
+        width: 22rem !important;
+    }
+
+    #col-container{
+        margin-left: 1.8rem !important;
+    }
+
+    #new-product-entries{
+        font-size: 14px !important;
+        width: 16rem !important;
+    }
+
+    #add-product-btn{
+        margin-left: 4rem !important;
+    }
+}
+
+@media(max-width:320px) {
+    .f-info{
+        width: 18rem !important;
+        margin: auto !important;
+    }
+
+    .product-container{
+        width: 300px !important;
+    }
+    .rowContainer{
+        margin-left: 0rem !important;
+    }
+
+    .show-heading{
+        margin-left: 4rem !important;
     }
 }
